@@ -170,14 +170,15 @@ class CMSPluginBase(with_metaclass(CMSPluginBaseMetaclass, admin.ModelAdmin)):
 
     def save_model(self, request, obj, form, change):
         """
-        Override original method, and add some attributes to obj
-        This have to be made, because if object is newly created, he must know
+        FIXME: this docstring sucks.
+        Override original method and add some attributes to obj.
+        This has to be made, because if object is newly created, he must know
         where he lives.
         Attributes from cms_plugin_instance have to be assigned to object, if
         is cms_plugin_instance attribute available.
         """
 
-        if getattr(self, "cms_plugin_instance"):
+        if self.cms_plugin_instance is not None:
             # assign stuff to object
             fields = self.cms_plugin_instance._meta.fields
             for field in fields:
