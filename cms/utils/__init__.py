@@ -14,6 +14,7 @@ def get_template_from_request(request, obj=None, no_current_page=False):
     Gets a valid template from different sources or falls back to the default
     template.
     """
+    # FIXME: what is "obj" provide documentation. A page?
     template = None
     # TEMPLATES has always a minimum length of 1 since constants.TEMPLATE_INHERITANCE_MAGIC
     # gets always added (see utils/conf.py). So if len(..) == 1 there are no user defined
