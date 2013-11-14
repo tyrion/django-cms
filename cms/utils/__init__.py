@@ -15,6 +15,9 @@ def get_template_from_request(request, obj=None, no_current_page=False):
     template.
     """
     template = None
+    # TEMPLATES has always a minimum length of 1 since constants.TEMPLATE_INHERITANCE_MAGIC
+    # gets always added (see utils/conf.py). So if len(..) == 1 there are no user defined
+    # templates and "INHERIT" gets returned. Is "INHERIT" a valid template?
     if len(get_cms_setting('TEMPLATES')) == 1:
         return get_cms_setting('TEMPLATES')[0][0]
     if "template" in request.REQUEST:
