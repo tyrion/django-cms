@@ -44,6 +44,7 @@ class ToolbarPool(object):
         if name in self.toolbars.keys():
             raise ToolbarAlreadyRegistered("[%s] a toolbar with this name is already registered" % name)
         self.toolbars[name] = toolbar
+        return toolbar
 
     def unregister(self, toolbar):
         name = '%s.%s' % (toolbar.__module__, toolbar.__name__)
